@@ -1,0 +1,60 @@
+{
+    "learning_rate": 0.01,
+    "num_rounds": 200,
+    "clients_per_round": 10,
+    "eval_every": 1,
+    "batch_size": 10,
+    "num_epochs": 20,
+    "drop_percent": 0,
+    "log_dir": "logs",
+    "model_dir": "models",
+    "seed": 1,
+    "num_clients": 100,
+    "device": "cuda",
+
+    "dataset_configs": {
+        "mnist": {
+            "model": "mclr",
+            "input_dim": 784,
+            "num_classes": 10,
+            "model_params": [784, 10]
+        },
+        "nist": {
+            "model": "mclr",
+            "input_dim": 1024,
+            "num_classes": 26,
+            "model_params": [1024, 26]
+        },
+        "shakespeare": {
+            "model": "stacked_lstm",
+            "model_params": [80, 80, 256]
+        },
+        "sent140": {
+            "model": "stacked_lstm",
+            "model_params": [25, 2, 100],
+            "num_classes": 2
+        },
+        "synthetic": {
+            "model": "mclr",
+            "input_dim": 60,
+            "num_classes": 10,
+            "model_params": [60, 10]
+        }
+    },
+
+    "optimizer_configs": {
+        "fedavg": {
+            "mu": 0
+        },
+        "fedprox": {
+            "mu": 1.0
+        },
+        "feddynr": {
+            "mu_base": 1.0,
+            "mu_0": 1.0,
+            "T": 200,
+            "lambda_": 1.0,
+            "alpha": 0.1
+        }
+    }
+} 
